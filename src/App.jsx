@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import Main from "./components/Main";
 import { useEffect } from "react";
-
+import questions from "../data/questions";
 import { QuizProvider, useQuizContext } from "./Context/QuizProvider";
 
 function App() {
@@ -18,9 +18,9 @@ function Application() {
   useEffect(() => {
     async function getQuestions() {
       try {
-        const res = await fetch("http://localhost:8080/questions");
-        const data = await res.json();
-        dispatch({ type: "Questions/Load", payload: data });
+        // const res = await fetch("http://localhost:8080/questions");
+        // const data = await res.json();
+        dispatch({ type: "Questions/Load", payload: questions });
       } catch (err) {
         dispatch({ type: "error", payload: "Error fetching options" });
       }
